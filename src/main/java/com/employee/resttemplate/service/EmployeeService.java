@@ -13,22 +13,21 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    @Value(value = "${spring.employee.url}")
-    private String employeeUrl;
+
 
     @Autowired
     private RestTemplate restTemplate;
 
     public EmployeeResponse saveEmployee(EmployeeRequest employeeRequest) {
-      return restTemplate.postForEntity(employeeUrl+"/saveEmployee",employeeRequest, EmployeeResponse.class).getBody();
+      return restTemplate.postForEntity("/saveEmployee",employeeRequest, EmployeeResponse.class).getBody();
     }
         public List<EmployeeResponse> getAllEmployees() {
-           return  restTemplate.getForObject(employeeUrl+"/getEmployees",List.class,"");
+           return  restTemplate.getForObject("/getEmployees",List.class,"");
         }
 
        public EmployeeResponse getEmployeeById(Long employeeId) {
             //return restTemplate.getForObject(employeeUrl+"/getEmployeeById?employeeId={employeeId}",EmployeeResponse.class,employeeId);
-           return restTemplate.getForEntity(employeeUrl+"/getEmployeeById?employeeId={employeeId}",EmployeeResponse.class,employeeId).getBody();
+           return restTemplate.getForEntity("/getEmployeeById?employeeId={employeeId}",EmployeeResponse.class,employeeId).getBody();
         }
 
 
