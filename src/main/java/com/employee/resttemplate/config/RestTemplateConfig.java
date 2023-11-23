@@ -17,10 +17,6 @@ public class RestTemplateConfig {
     private String employeeUrl;
     @Bean
     public RestTemplate getRestTemplate() {
-        //RestTemplate restTemplate =  new RestTemplate();
-//        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-//        restTemplate.getMessageConverters().add(new MappingJackson2CborHttpMessageConverter());
-        //return restTemplate;
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         return restTemplateBuilder.rootUri(employeeUrl).build();
 
