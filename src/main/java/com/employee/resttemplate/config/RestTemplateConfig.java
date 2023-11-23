@@ -15,7 +15,6 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate getRestTemplate() {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
-
         return restTemplateBuilder.rootUri(employeeUrl).build();
 
     }
