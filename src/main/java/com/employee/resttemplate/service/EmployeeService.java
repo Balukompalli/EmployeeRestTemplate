@@ -3,6 +3,8 @@ package com.employee.resttemplate.service;
 import com.employee.resttemplate.model.EmployeeRequest;
 import com.employee.resttemplate.model.EmployeeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +20,11 @@ public class EmployeeService {
     public EmployeeResponse saveEmployee(EmployeeRequest employeeRequest) {
         return restTemplate.postForEntity("/saveEmployee", employeeRequest, EmployeeResponse.class).getBody();
     }
+
+    public EmployeeResponse saveEmployeeExchange(EmployeeRequest employeeRequest) {
+        return restTemplate.exchange("/saveEmployee", HttpMethod.POST, new HttpEntity<>(employeeRequest), EmployeeResponse.class).getBody();
+    }
+
 
     public List<EmployeeResponse> getAllEmployees() {
         return restTemplate.getForObject("/getEmployees", List.class, "");

@@ -23,6 +23,11 @@ public class EmployeeRestTemplateController {
     }
 
 
+    @PostMapping("/saveEmployeeExchange")
+    public ResponseEntity<EmployeeResponse> saveEmployeeExchange(@RequestBody EmployeeRequest employeeRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.saveEmployeeExchange(employeeRequest));
+    }
+
     @GetMapping(value = "/getEmployees")
     public ResponseEntity<List<EmployeeResponse>> getEmployee() {
         return ResponseEntity.status(HttpStatus.OK).body(employeeService.getAllEmployees());
