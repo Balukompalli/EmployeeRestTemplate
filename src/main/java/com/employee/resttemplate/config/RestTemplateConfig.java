@@ -11,6 +11,7 @@ public class RestTemplateConfig {
 
     @Value(value = "${spring.employee.url}")
     private String employeeUrl;
+
     @Bean
     public RestTemplate getRestTemplate() {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
