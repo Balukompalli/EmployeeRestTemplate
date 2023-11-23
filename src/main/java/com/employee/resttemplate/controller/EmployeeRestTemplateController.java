@@ -4,10 +4,9 @@ import com.employee.resttemplate.model.EmployeeRequest;
 import com.employee.resttemplate.model.EmployeeResponse;
 import com.employee.resttemplate.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -15,12 +14,12 @@ import java.util.List;
 @RequestMapping("/rest-template")
 public class EmployeeRestTemplateController {
 
-@Autowired
- EmployeeService employeeService;
+    @Autowired
+    EmployeeService employeeService;
 
     @PostMapping("/saveEmployee")
     public ResponseEntity<EmployeeResponse> saveEmployee(@RequestBody EmployeeRequest employeeRequest) {
-     return ResponseEntity.status(HttpStatus.OK).body(employeeService.saveEmployee(employeeRequest));
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.saveEmployee(employeeRequest));
     }
 
 

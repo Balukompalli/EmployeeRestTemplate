@@ -19,9 +19,9 @@ public class HeaderUtil {
 
     @PostConstruct
     public void getHttpHeaders() {
-       headers = new  HttpHeaders();
+        headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        objectMapper =  new ObjectMapper();
+        objectMapper = new ObjectMapper();
     }
 
 
