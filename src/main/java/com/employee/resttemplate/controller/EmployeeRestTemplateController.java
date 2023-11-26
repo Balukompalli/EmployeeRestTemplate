@@ -3,6 +3,7 @@ package com.employee.resttemplate.controller;
 import com.employee.resttemplate.model.EmployeeRequest;
 import com.employee.resttemplate.model.EmployeeResponse;
 import com.employee.resttemplate.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/rest-template")
+@Slf4j
 public class EmployeeRestTemplateController {
 
     @Autowired
@@ -31,7 +33,6 @@ public class EmployeeRestTemplateController {
     @GetMapping(value = "/getEmployees")
     public ResponseEntity<List<EmployeeResponse>> getEmployee() {
         return ResponseEntity.status(HttpStatus.OK).body(employeeService.getAllEmployees());
-
     }
 
     @GetMapping("/getEmployeeById")
@@ -39,5 +40,8 @@ public class EmployeeRestTemplateController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(employeeService.getEmployeeById(employeeId));
     }
+
+
+
 
 }
